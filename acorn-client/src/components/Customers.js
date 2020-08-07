@@ -13,6 +13,10 @@ const Customers = () => {
   const [ country, setCountry ] = useState("");
   const [ stair, setStair ] = useState("");
 
+  // used to reload the component automatically
+  const filterData = (oldID) => setData(data.filter(x => x.id !== oldID));
+  const addData = () => setData([...data,  {name, country, age, stair}]);
+
   const removeCustomer = (id) => {
     const payload = {id};
     const options = {
@@ -29,10 +33,6 @@ const Customers = () => {
 
     filterData(id);
   }
-
-  // used to reload the component automatically
-  const filterData = (oldID) => setData(data.filter(x => x.id !== oldID));
-  const addData = () => setData([...data,  {name, country, age, stair}]);
 
   const addToDatabase = () => {
     let stair_id = "";
