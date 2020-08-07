@@ -42,7 +42,6 @@ def hello():
 @app.route("/add", methods=["POST"])
 def add():
     data = request.json
-    print(data)
     cust = Customer(data['age'], data['name'], data['country'], data['stair_id'])
     db.session.add(cust)
     db.session.commit()
@@ -57,7 +56,6 @@ def remove():
 
 @app.route("/get_all")
 def get_all():
-    print("..getting all customers")
     data = Customer.query.all()
     return jsonify([c.serialize() for c in data])
 
